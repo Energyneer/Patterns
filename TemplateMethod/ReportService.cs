@@ -5,8 +5,6 @@ namespace TemplateMethod;
 /// </summary>
 public abstract class ReportService : IReportService
 {
-    private Report _report;
-
     /// <inheritdoc />
     public Report GenerateReport(ICollection<Member> members)
     {
@@ -27,7 +25,7 @@ public abstract class ReportService : IReportService
     /// <returns>Strings containing index and full name</returns>
     private ICollection<string> GetFullNameMembers(ICollection<Member> members)
     {
-        return members.Select((m, index) => $"{index}. {m.LastName} {m.FirstName}").ToList();
+        return members.Select((m, index) => $"{index + 1}. {m.LastName} {m.FirstName}").ToList();
     }
 
     /// <summary>
